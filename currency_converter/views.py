@@ -12,17 +12,7 @@ class CurrencyConverter(APIView):
     app_id = "1c8648ab4b7689dbb9d539ab"
 
     def get(self, request, version):
-        if "base_currency" in request.data:
-            return Response(
-                {"success": False, "errors": [{"base_currency": "This filed is required"}], "status_code": 1,
-                 "status_message": "failed",
-                 "message": "Cannot do currency conversion",
-                 "data": None}, status=status.HTTP_201_CREATED)
 
-        base_currency = request.data['base_currency']
-        target_currency = request.data['target_currency']
-        url = f"https://v6.exchangerate-api.com/v6/{self.app_id}/pair/{base_currency}/{target_currency}"
-        response = requests.get(url)
         return Response("json.loads(response)")
 
     def post(self, request, version):

@@ -27,7 +27,7 @@ class AccountView(APIView):
 @api_view(["POST"])
 def login(request, version):
     try:
-        user = Account.objects.get(email=request.data['email'])
+        user = Account.objects.get(username=request.data['username'])
     except:
         return Response(
             {"success": False, "errors": ["Invalid username or password"], "status_code": 1,
